@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FunWithGeo.Api</name>
+    </assembly>
+    <members>
+        <member name="T:FunWithGeo.Api.CartesianPlaneProvider">
+            <summary>
+            Provides cartesian planes represented in memory
+            </summary>
+        </member>
+        <member name="P:FunWithGeo.Api.CartesianPlaneProvider.CartesianPlaneOn60X60GridWithIsoscelesRightTriangles">
+            <summary>
+            A cartesian plane of size 60x60 pixels populated by isosceles triangles whose non-hypotenuse side length is 10px
+            </summary>
+        </member>
+        <member name="M:FunWithGeo.Api.CartesianPlaneProvider.CreateNewCartesianPlaneOn60X60GridWithIsoscelesRightTriangles">
+            <summary>
+            Configured desired shapes in the cartesian plane
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FunWithGeo.Api.Controllers.TriangleController">
+            <summary>
+            Exposes methods for finding isosceles-right triangles inside 60x60 grid
+            </summary>
+        </member>
+        <member name="M:FunWithGeo.Api.Controllers.TriangleController.#ctor(FunWithGeo.Api.ICartesianPlanProvider)">
+            <summary>
+            Controller
+            </summary>
+            <param name="cartesianPlanProvider"></param>
+        </member>
+        <member name="M:FunWithGeo.Api.Controllers.TriangleController.Get(System.String)">
+            <summary>
+            Returns json representation of isosceles triangle that matches <paramref name="label"/>
+            </summary>
+            <param name="label">The label of the triangle to search by</param>
+            <returns></returns>
+        </member>
+        <member name="M:FunWithGeo.Api.Controllers.TriangleController.Get(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Returns json representation of isosceles triangle that matches coordinates
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

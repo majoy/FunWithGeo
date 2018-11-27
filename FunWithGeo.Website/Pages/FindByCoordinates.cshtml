@@ -1,0 +1,67 @@
+﻿@page
+@using FunWithGeo.Website.Extensions
+@using Microsoft.AspNetCore.Http
+@model FunWithGeo.Website.Pages.FindByCoordinatesModel
+@{
+    ViewData["Title"] = "FindByCoordinates";
+}
+@inject IHttpContextAccessor HttpContextAccessor
+<h2>Search Triangle By Coordinates</h2>
+
+<div class="row">
+    <div class="col">
+        <div class="container">
+            <form method="post" class="mt-4">
+                <div class="form-group">
+                    <label asp-for="X1">X1:</label>
+                    <input type="text" class="form-control" data-numeric-only asp-for="X1">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Y1">Y1:</label>
+                    <input type="text" class="form-control" data-numeric-only asp-for="Y1">
+                </div>
+                <div class="form-group">
+                    <label asp-for="X2">X2:</label>
+                    <input type="text" class="form-control" data-numeric-only asp-for="X2">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Y2">Y2:</label>
+                    <input type="text" class="form-control" data-numeric-only asp-for="Y2">
+                </div>
+                <div class="form-group">
+                    <label asp-for="X3">X3:</label>
+                    <input type="text" class="form-control" data-numeric-only asp-for="X3">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Y3">Y3:</label>
+                    <input type="text" class="form-control" data-numeric-only asp-for="Y3">
+                </div>
+
+                <button id="find-btn" type="submit" class="btn btn-primary">Find</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-top:10px">
+    <div class="col">
+        <div class="container">
+            @if (HttpContextAccessor.HttpContext.Request.Method == "POST")
+            {
+                if (Model.FoundTriangle == null)
+                {
+                    <div id="error-msg" class="alert alert-danger">
+                        Triangle not found with coordinates @Model.GetCoordinates().DisplayAsString()
+                    </div>
+                }
+                else
+                {
+                    <div id="success-msg" class="alert alert-success">
+                        Triangle labeled @Model.FoundTriangle.Label was successfully found at @Model.GetCoordinates().DisplayAsString()
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
